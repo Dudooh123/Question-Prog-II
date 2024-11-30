@@ -1,0 +1,35 @@
+package treinando_for_prova;
+
+public class Equipe {
+	private String nomeEquipe;
+	private String paisEquipe;
+	
+	public Equipe(String nomeEquipe, String paisEquipe) {
+		super();
+		this.nomeEquipe = nomeEquipe;
+		this.paisEquipe = paisEquipe;
+	}
+
+	public String getNomeEquipe() {
+		return nomeEquipe;
+	}
+
+	public void setNomeEquipe(String nomeEquipe) {
+		this.nomeEquipe = nomeEquipe;
+	}
+
+	public String getPaisEquipe() {
+		return paisEquipe;
+	}
+
+	public void setPaisEquipe(String paisEquipe) {
+		this.paisEquipe = paisEquipe;
+	}
+	
+	public String toString() {
+		return "Equipe " + nomeEquipe + ", País " + paisEquipe;
+	}
+	
+	
+
+}
