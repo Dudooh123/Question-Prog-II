@@ -1,0 +1,37 @@
+package treinando_for_prova;
+
+public class Piloto extends Pessoa{
+	
+	private int numeroDeTitulos;
+	private Equipe equipe;
+	
+	public Piloto(String nome, String nacionalidade, int numeroDeTitulos, Equipe equipe) {
+		super(nome, nacionalidade);
+		this.numeroDeTitulos = numeroDeTitulos;
+		this.equipe = equipe;
+	}
+
+	public int getNumeroDeTitulos() {
+		return numeroDeTitulos;
+	}
+
+	public void setNumeroDeTitulos(int numeroDeTitulos) {
+		this.numeroDeTitulos = numeroDeTitulos;
+	}
+
+	public Equipe getEquipe() {
+		return equipe;
+	}
+
+	public void setEquipe(Equipe equipe) {
+		this.equipe = equipe;
+	}
+	
+	public String toStrig() {
+		return "Nome: " + nome +
+		", Nacionalidade " + nacionalidade +
+		", Títulos: " + numeroDeTitulos + 
+		", Equipe: " + equipe;
+	}
+
+}
