@@ -1,0 +1,102 @@
+package treinando_for_prova;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+
+		Scanner leitor = new Scanner(System.in); //Declarando objeto leitor de entradas
+		ArrayList<Piloto> arrayPilotos = new ArrayList<>(); //ArrayList de pilotos
+		boolean ligado = true; //Loop do while
+
+		do {
+			System.out.println("---MENU---"); //Menu
+			System.out.println("[1] --> Para inserir um Piloto ");
+			System.out.println("[2] --> Remover um Piloto pelo nome ");
+			System.out.println("[3] --> Imprimir dados do piloto ");
+			System.out.println("[4] --> Sair ");
+			System.out.print("Escolha uma opção: ");
+
+			try { //Inicio da verificação
+				int escolha = Integer.parseInt(leitor.nextLine());
+
+				switch (escolha) {
+				case 1:
+					System.out.println("--Criando piloto e a Equipe--");
+					System.out.print("Nome do piloto: ");
+					String nomePiloto1 = leitor.nextLine().strip();
+
+					System.out.print("Nacionalidade do piloto: ");
+					String nacionalidadePiloto1 = leitor.nextLine().strip();
+
+					System.out.print("Nome da Equipe: ");
+					String nomeEquipe1 = leitor.nextLine().strip();
+
+					System.out.print("Pais da Equipe: ");
+					String paisEquipe1 = leitor.nextLine().strip();
+
+					System.out.print("Número de títulos do Piloto: ");
+					int numeroTitulosPiloto1 = Integer.parseInt(leitor.nextLine());
+
+					// Criando equipe e piloto
+					Equipe e1 = new Equipe(nomeEquipe1, paisEquipe1);
+					Piloto piloto1 = new Piloto(nomePiloto1, nacionalidadePiloto1, numeroTitulosPiloto1, e1);
+
+					arrayPilotos.add(piloto1);
+					System.out.println("Piloto adicionado com sucesso!");
+					break;
+
+				case 2:
+					System.out.println("--Removendo Piloto pelo Nome--");
+					System.out.print("Informe o nome do piloto a ser removido: ");
+					String removerNome = leitor.nextLine().strip();
+
+					boolean encontrado = false;
+					for (Piloto piloto : arrayPilotos) {
+						if (piloto.nome.equalsIgnoreCase(removerNome)) {
+							arrayPilotos.remove(piloto);
+							System.out.println("Piloto removido com sucesso!");
+							encontrado = true;
+							break;
+						}
+					}
+
+					if (!encontrado) {
+						System.out.println("Piloto não encontrado!");
+					}
+					break;
+
+				case 3:
+					System.out.println("Imprimindo os dados dos Pilotos:");
+					if (arrayPilotos.isEmpty()) {
+						System.out.println("Nenhum piloto cadastrado.");
+					} else {
+						for (Piloto piloto : arrayPilotos) {
+							System.out.println(piloto);
+						}
+					}
+					break;
+
+				case 4:
+					System.out.println("--Saindo--");
+					ligado = false;
+					break;
+
+				default:
+					System.out.println("Opção inválida. Tente novamente.");
+					break;
+				}
+
+			} catch (NumberFormatException e) {
+				System.out.println("Entrada inválida! Digite um número correspondente ao menu.");
+			} catch (Exception e) {
+				System.out.println("Ocorreu um erro: " + e.getMessage());
+			}
+
+		} while (ligado);
+
+		leitor.close();
+	}
+}
